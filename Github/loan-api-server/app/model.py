@@ -41,7 +41,7 @@ class LoanModel :
         self.label_encoder = joblib.load(encoder_path)
         self.feature_names = joblib.load(feature_names_path)
 
-        logging.info("모델 로드 완료 ; AWS에 cloudWatch라는 곳에 쌓이도록 추후 수정")
+        logging.info("모델 로드 완료 ; 추후, AWS에 cloudWatch라는 곳에 쌓이도록 수정")
     
     @staticmethod
     def _map_to_korean(data: dict[str, Any]) -> dict[str, Any]:
@@ -70,9 +70,10 @@ class LoanModel :
             "probaility" : pos_p,
             "risk_grade" : risk_grade,
         }
+
         
     @staticmethod    
-    def _get_risk_grad(prob:float) -> Str :
+    def _get_risk_grad(pos_p:float) -> Str :
         if pos_p >= 0.75:
             return "A"
         elif pos_p >= 0.5:
