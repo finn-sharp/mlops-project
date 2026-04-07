@@ -22,7 +22,7 @@ class ReviewAnalyzer :
     def test(self):
         test_prompt = "동작을 확인합니다, 대화 준비가 되었다면, 답변해주세요"
         response = self.client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-2.5-flash-lite",
             contents=test_prompt
         )
         return response
@@ -71,7 +71,7 @@ class ReviewAnalyzer :
         """ 
 
         response = self.client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-2.5-flash-lite",
             contents=prompt
         )
 
