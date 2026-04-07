@@ -34,8 +34,7 @@ class ReviewAnalyzer:
     def analyze(self, review_text:str) -> dict: # Json으로 보내야하니까 (Dict로 명시)
         prompt = f"""주어진 리뷰 텍스트를 분석해주세요.
 
-        리뷰 : 상품 색상이 사진과 너무 달라요.
-        ㄴ 이 자리에 인자의 {review_text}의 데이터가 들어감 !!!!!!!
+        리뷰 : {review_text}
 
         다음 기준으로 분석하세요 :
         - sentiment : '긍정', '부정', '중립' 중 하나
