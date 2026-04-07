@@ -1,3 +1,4 @@
+# Java, DTO라고 함
 from pydantic import BaseModel, Field
 
 

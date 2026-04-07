@@ -2,11 +2,21 @@
 
 from fastapi import FastAPI, HTTPException
 import logging
+from contextlib import asynccontextmanager
+import os
 
-from model import LoanModel
-from schemas import LoanResponse, LoanRequest
+from .model import LoanModel
+from .schemas import LoanResponse, LoanRequest
 
+# DEBUG
+import traceback
+
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_DIR = os.path.join(BASE_DIR, "models")
+print(MODEL_DIR)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -16,10 +26,15 @@ async def lifespan(app: FastAPI):
     logger.info('대출 심사 모델을 로드합니다')
     model = LoanModel()
     try : 
-        model.load(model_dir='../models')
+        model.load(model_dir=MODEL_DIR)
         logger.info('모델 로드 성공')
     except :
         logger.warning('모델 로드 실패')
+
+        # DEBUG
+        print(e)
+        traceback.print_exc()
+
         logger.warning('/predict 엔드포인트는 모델 로드 후 사용가능')
     
     app.state.model = model
@@ -49,7 +64,7 @@ async def health_check():
 
 
 # 머신러닝 예측하는 API 로직( 정의한 schema로 통신 )
-@app.post("/predict", response_mode = LoanResponse)
+@app.post("/predict", response_model= LoanResponse)
 async def predict(request : LoanRequest):
     model = app.state.model
 

@@ -1,3 +1,4 @@
+# Java, 서비스에 해당하는 파일이라고 함
 import os
 import logging
 import joblib
@@ -34,7 +35,7 @@ class LoanModel :
 
     def load(self, model_dir: str = "models") -> None:
         pipeline_path = os.path.join( model_dir, 'loan_pipeline.pkl')
-        encoder_path = os.path.join( model_dir, 'label_encoder.pkl')
+        encoder_path = os.path.join( model_dir, 'label_encoders.pkl')
         feature_names_path = os.path.join(model_dir, 'feature_names.pkl')
 
         self.pipeline = joblib.load(pipeline_path)
@@ -73,7 +74,7 @@ class LoanModel :
 
         
     @staticmethod    
-    def _get_risk_grad(pos_p:float) -> Str :
+    def _get_risk_grad(pos_p:float) -> str :
         if pos_p >= 0.75:
             return "A"
         elif pos_p >= 0.5:
