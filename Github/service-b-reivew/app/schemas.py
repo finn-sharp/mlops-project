@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 
-class AnalysisRequest(Basemodel):
+class AnalysisRequest(BaseModel):
     """Review 데이터 입력 스키마"""
     review_text:str = Field(
         ...,
@@ -21,15 +21,15 @@ class AnalysisRequest(Basemodel):
 class AnalysisResponse(BaseModel):
     sentiment : str = Field(
         ...,
-        description="감정분석 (True='긍정', False='부정')",
+        description="감정분석 ('긍정', '중립', '부정')",
     )
     category : str = Field(
         ...,
-        description="서비스유형 ('배송','상담','주문')",
+        description="서비스유형 [배송, 품질, 가격, CS]",
     )
     summary : str = Field(
         ...,
-        description="불만 사항에 대한 요약"
+        description="불만 사항에 대한 요약",
     )
     confidence : float = Field(
         ...,
