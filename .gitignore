@@ -1,0 +1,6 @@
+DS.store
+__pycache__
+.vscode
+
+# 보안 - .env는 프로젝트 폴더 이하
+.env 
