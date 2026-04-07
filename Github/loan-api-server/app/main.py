@@ -68,7 +68,7 @@ async def health_check():
 
 
 # 머신러닝 예측하는 API 로직( 정의한 schema로 통신 )
-@app.post("/predict", response_model= LoanResponse)
+@app.post("/predict", response_model= LoanResponse) # response_model을 다시 return해줘야 함
 async def predict(request : LoanRequest):
     model = app.state.model
 
