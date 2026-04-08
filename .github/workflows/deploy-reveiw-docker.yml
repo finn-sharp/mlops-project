@@ -41,4 +41,4 @@ jobs:
             sleep 2
 
             # Local env 에서는 GEMINI_API로 맞췄음, GITHUB에서는 GEMINI_API_KEY로 맞췄음 
-             sudo docker run -d --name review-api -p 8005:8005 -e GEMINI_API=${{ secrets.GEMINI_API }} review-api-server
+             sudo docker run -d --name review-analyzer -p 8005:8005 -e GEMINI_API=${{ secrets.GEMINI_API }} review-api-server
