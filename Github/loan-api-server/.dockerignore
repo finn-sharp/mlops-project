@@ -1,5 +1,9 @@
 # 이미지 빌드할 때, 포함시키지 않아도 될 것들 (속도..!)
 
+# Docker
+.dockerignore
+Dockerfile
+
 # Python
 __pycache__/
 *.py[cod]
