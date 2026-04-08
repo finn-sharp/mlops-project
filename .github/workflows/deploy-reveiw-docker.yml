@@ -40,5 +40,8 @@ jobs:
             fuser -k 8005/tcp || true
             sleep 2
 
+            # GitHub secret을 SSH 세션 환경변수에 할당
+            GEMINI_API_KEY="${{ secrets.GEMINI_API_KEY }}"
+            
             # .env 파일을 배포하면 안됩니다 ! -e flag와 github secrets variable을 사용해서 환경변수를 전달해줄게요
-            sudo docker run -d --name review-analyzer -e GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }} -p 8005:8005 review-analyzer
+            sudo docker run -d --name review-analyzer -e GEMINI_API_KEY=$GEMINI_API_KEY -p 8005:8005 review-analyzer
