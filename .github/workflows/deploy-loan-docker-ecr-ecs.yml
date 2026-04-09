@@ -34,16 +34,9 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       # 4. 프로젝트 폴더로 이동
-      - name: Debug
-        run: |
-          pwd
-          ls -R
-
       - name: Change to project directory
         run: |
-          cd Github/loan-api-server-ecs
-      
-    
+          cd Github/loan-api-server-ecs    
 
       # 5. Docker 이미지 빌드 & ECR Push
       - name: Build and push Docker image
