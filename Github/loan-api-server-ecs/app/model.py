@@ -45,10 +45,9 @@ class LoanModel :
     # 2. 기존에 local에서 불러온 모델(loan_pipeline, label_encoders, feature_names)을 이제 AWS S3에서 불러오도록 수정 !!!!
     def load(self) -> None:
         bucket = os.environ.get("MODEL_BUCKET")
-        prefix = os.environ.get("MODEL_PREFIX")
-
-        
-        self._load_from_s3(bucket, prefix)
+        prefix = os.environ.get("MODEL_PREFIX")        
+        model = self._load_from_s3(bucket, prefix)
+        return model
         
     def _load_from_s3(self, bucket: str, prefix: str) -> None:
         logger.info(f"S3에서 모델 로드: s3://{bucket}/{prefix}/")
