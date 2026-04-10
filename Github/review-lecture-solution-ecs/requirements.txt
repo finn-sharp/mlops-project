@@ -1,0 +1,9 @@
+# 회사에서는 버전정보를 명시하는 것을 권장하지만, 여기서는 편의상 생략할게요
+fastapi
+uvicorn
+google-genai
+python-dotenv
+pydantic
+
+# conda install certifi -c conda-forge
+certifi
