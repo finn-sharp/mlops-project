@@ -66,4 +66,5 @@ def analyze_review(request : ReviewRequest):
     except ValueError as e:
         raise HTTPException(status_code=422, detail="입력값 처리오류")
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500)
