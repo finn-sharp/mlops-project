@@ -24,7 +24,7 @@ TRAIN_DATA = os.path.join(DATA_DIR, "loan_data.csv")
 PRED_LOGS = os.path.join(DATA_DIR, "prediction_logs.csv")
 MODEL_DIR = os.path.join(BASE_DIR, "Github", "loan-api-server-ecs", "models")
 
-# S3 설정 — 본인 번호로 변경하세요
+# S3에서 불러오는 작업을 수행할 건데, 그전에 권한(access key, secret key)가 cli에 설정되어 있어야 합니다.
 S3_BUCKET = "mlops-lab-shared-data"
 S3_PREFIX = "student-13"                
 AWS_REGION = "ap-northeast-2"
